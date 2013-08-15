@@ -1,9 +1,9 @@
 w2wiki
 ======
 
-# W2 by Steven Frank
+### W2 by Steven Frank
 
-## A web-based, wiki-like notepad that you host yourself.
+#### A web-based, wiki-like notepad that you host yourself.
 
 Notable features:
 
@@ -18,11 +18,11 @@ Notable features:
 - Public or password-protected
 - Unlike cloud / hosted solutions, you retain control of your data
 
-## Demo
+#### Demo
 
 [See a sample W2 installation](http://stevenf.com/w2demo/)
 
-## Forum
+#### Forum
 
 http://groups.google.com/group/w2wiki
 
