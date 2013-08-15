@@ -1,0 +1,156 @@
+/*
+ * W2
+ *
+ * Copyright (C) 2007-2011 Steven Frank <http://stevenf.com/>
+ *
+ * Code may be re-used as long as the above copyright notice is retained.
+ * See README.txt for full details.
+ *
+ * Written with Coda: <http://panic.com/coda/>
+ *
+ */
+ 
+* {
+	font-family: Helvetica, sans-serif;
+	font-size: 13px;
+	margin: 0;
+	padding: 0;
+}
+
+blockquote {
+	background-color: #f0f8f0;
+	margin: 0px 0px 12px 20px;
+	padding-top: 4px 10px 4px 10px;
+}
+
+form {
+	display: inline;
+}
+
+li {
+	line-height: 1.5em;
+}
+
+h1 {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+h3 {
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+hr {
+	border-top: 1px solid #cccccc;
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+ul {
+	padding-left: 12px;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	list-style-position: inside;
+}
+
+ol {
+	margin-left: 12px;
+	margin-bottom: 12px;
+	padding-left: 12px;
+        list-style-position: inside;
+}
+
+p {
+	margin: 12px 12px 12px 12px;
+}
+
+pre {
+	font-family: Menlo, Courier, monospace;
+	font-size: 11px;
+	margin-left: 12px;
+	margin-bottom: 12px;
+
+	/* stroke each browser so that they wrap lines in the pre tag */
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+code {
+	font-family: Menlo, Courier, monospace;
+	font-size: 11px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, td {
+	padding: 2px;
+}
+
+textarea {
+	font-family: Menlo, Courier, monospace;
+	font-size: 11px;
+	width: 99%;
+	background-color: #ffffee;
+}
+
+.main {	
+	padding: 8px;
+}
+
+.note {
+	background-color: #ffffcc;
+	padding: 4px;
+	margin: 0 8px 8px 8px;
+	color: #666644;
+	border: solid 1px #666644;
+}
+
+.titlebar {
+	background-color: #222222;
+	background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#000000));
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 4px 4px 4px 12px;
+}
+
+.titledate {
+	font-size: 10px;
+	color: #999999;
+}
+
+.toolbar {
+	background-color: #777777;
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#444444));
+	font-size: 12px;
+	padding: 4px 4px 4px 12px;
+}
+
+a.tool {
+	font-size: 11px;
+	margin-right: 8px;
+	color: #eeeeee;
+}
+
+input.tool {
+	font-size: 11px;
+	color: #000000;
+}
+
