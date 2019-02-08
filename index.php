@@ -12,7 +12,15 @@
  *
  */
  
-include_once "markdown.php";
+// Install PSR-4-compatible class autoloader
+spl_autoload_register(function($class){
+	require str_replace('\\', DIRECTORY_SEPARATOR, ltrim($class, '\\')).'.php';
+});
+
+
+// Get Markdown class
+use Michelf\MarkdownExtra;
+
 
 // User configurable options:
 
@@ -145,7 +153,7 @@ function toHTML($inText)
 	$inText = preg_replace("/\{\{(.*?)\}\}/", "<img src=\"" . BASE_URI . "/images/\\1\" alt=\"\\1\" />", $inText);
 	$inText = preg_replace("/message:(.*?)\s/", "[<a href=\"message:\\1\">email</a>]", $inText);
 
-	$html = Markdown($inText);
+	$html = MarkdownExtra::defaultTransform($inText);
 	$inText = htmlentities($inText);
 
 	return $html;
