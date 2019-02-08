@@ -298,7 +298,7 @@ else if ( $action == "uploaded" )
 }
 else if ( $action == "save" )
 {
-	$newText = stripslashes($_REQUEST['newText']);
+	$newText = $_REQUEST['newText'];
 
 	$errLevel = error_reporting(0);
 	$success = file_put_contents($filename, $newText);
