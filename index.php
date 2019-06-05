@@ -409,27 +409,26 @@ else if ( $action == "all_name" )
 		if ( $file{0} == "." )
 			continue;
 
-		$afile = preg_replace("/(.*?)\.txt/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $file);
-		$efile = preg_replace("/(.*?)\.txt/", "<a href=\"?action=edit&amp;page=\\1\">" . __('Edit') . '</a>', urlencode($file));
-
-		array_push($filelist, "<tr style=\"background-color: $color;\"><td>$afile</td><td width=\"20\"></td><td>$efile</td></tr>");
-
-		if ( $color == "#ffffff" )
-			$color = "#f4f4f4";
-		else
-			$color = "#ffffff";
+		array_push($filelist, $file);
 	}
 
 	closedir($dir);
 
 	natcasesort($filelist);
-	
+
 	$html = "<table>";
 
-
-	for ($i = 0; $i < count($filelist); $i++)
+	foreach ($filelist as $file)
 	{
-		$html .= $filelist[$i];
+		$afile = preg_replace("/(.*?)\.txt/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $file);
+		$efile = preg_replace("/(.*?)\.txt/", "<a href=\"?action=edit&amp;page=\\1\">" . __('Edit') . '</a>', urlencode($file));
+
+		$html .= "<tr style=\"background-color: $color;\"><td>$afile</td><td width=\"20\"></td><td>$efile</td></tr>";
+
+		if ( $color == "#ffffff" )
+			$color = "#f4f4f4";
+		else
+			$color = "#ffffff";
 	}
 
 	$html .= "</table>\n";
@@ -454,7 +453,7 @@ else if ( $action == "all_date" )
 
 	foreach ($filelist as $key => $value)
 	{
-		$date_format = __('date_format_no_time', TITLE_DATE_NO_TIME);
+		$date_format = __('date_format', TITLE_DATE);
 		$html .= "<tr style=\"background-color: $color;\"><td valign=\"top\">$key</td><td width=\"20\"></td><td valign=\"top\"><nobr>"
 			. date( $date_format, $value)
 			. "</nobr></td></tr>\n";
