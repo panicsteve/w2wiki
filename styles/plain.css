@@ -125,12 +125,12 @@ a:hover {
 
 
 .wrapper {
-    max-width:55em;
+    max-width:50em;
     padding: 10px;
 }
 
 /* Ajustement pour les petits écrans */
-@media (max-width:60em) {
+@media (max-width:55em) {
   .wrapper{
     width:90%
   }

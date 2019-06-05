@@ -60,7 +60,14 @@ define('DEFAULT_PAGE', 'Home');
 //
 // The CSS file to load to style the wiki, relative to BASE_URI
 
-define('CSS_FILE', 'index.css');
+define('CSS_FILE', 'styles/plain.css');
+
+// Templates
+//
+// The template file to load, should match css, relative to BASE_URI
+
+define('TEMPLATE', 'templates/plain.php');
+
 
 // --------------------
 // File upload settings
@@ -179,3 +186,5 @@ define('W2_CHARSET', 'UTF-8');
 // Name for locale.
 
 define('W2_LOCALE', 'en');
+
+

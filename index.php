@@ -26,9 +26,36 @@ use Michelf\MarkdownExtra;
 
 include_once "config.php";
 
-// Load localize functions
+// Localize functions
 
-include_once "locale.php";
+include_once 'locales/' . W2_LOCALE . '.php';
+
+/**
+ * Get translated word
+ *
+ * String	$label		Key for locale word
+ * String	$alt_word	Alternative word
+ * return	String
+ */
+function __( $label, $alt_word = null ){
+	global $w2_word_set;
+
+	if( empty($w2_word_set[$label]) ) {
+		return is_null($alt_word) ? $label : $alt_word;
+	}
+	return htmlspecialchars($w2_word_set[$label], ENT_QUOTES);
+}
+
+/**
+ * Echo translated word
+ *
+ * String	$label		Key for locale word
+ * String	$alt_word	Alternative word
+ */
+function _e( $label, $alt_word = null ){
+	echo __($label, $alt_word);
+}
+
 
 ini_set('session.gc_maxlifetime', W2_SESSION_LIFETIME);
 
@@ -87,48 +114,24 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 
 // Support functions
 
-function printToolbar()
-{
-	global $upage, $page, $action;
-
-	print "<div class=\"toolbar\">";
-	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">". __('Edit') ."</a> ";
-	print '<a class="tool" href="' . SELF . '?action=new">'. __('New') .'</a>';
-
-	if ( !DISABLE_UPLOADS )
-		print '<a class="tool" href="' . SELF . VIEW . '?action=upload">' . __('Upload') .'</a>';
-
-	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">". __('All') ."</a> ";
-	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">". __('Recent') ."</a> ";
-	print "<a class=\"tool\" href=\"" . SELF . "\">". __(DEFAULT_PAGE) . "</a>";
-
-	if ( REQUIRE_PASSWORD )
-		print '<a class="tool" href="' . SELF . '?action=logout">'. __('Exit') .'</a>';
-
-	print "<form method=\"post\" action=\"" . SELF . "?action=search\">\n";
-	print "<input class=\"tool\" placeholder=\"". __('Search') ."\" size=\"20\" id=\"search\" type=\"text\" name=\"q\" /></form>\n";
-
-	print "</div>\n";
-}
-
 function printListbar()
 {
 	global $upage, $page, $action;
-	print "<a class=\"tool\" href=\"" . SELF . "\">". __(DEFAULT_PAGE) . "</a> - ";
-	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">". __('All') ."</a> - ";
+	print "<a class=\"tool\" href=\"" . SELF . "\">". __(DEFAULT_PAGE) . "</a> ";
+	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">". __('All') ."</a> ";
 	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">". __('Recent') ."</a> ";
 	if ( REQUIRE_PASSWORD )
-		print '<a class="tool" href="' . SELF . '?action=logout">'. __('Exit') .'</a>';
+		print '<a class="tool" href="' . SELF . '?action=logout">'. __('Exit') .'</a> ';
 }
 
 function printEditbar()
 {
 	global $upage, $page, $action;
-	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">". __('Edit') ."</a> - ";
-	print '<a class="tool" href="' . SELF . '?action=new">'. __('New') .'</a>';
+	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">". __('Edit') ."</a> ";
+	print '<a class="tool" href="' . SELF . '?action=new">'. __('New') .'</a> ';
 
 	if ( !DISABLE_UPLOADS )
-		print ' - <a class="tool" href="' . SELF . VIEW . '?action=upload">' . __('Upload') .'</a>';
+		print '<a class="tool" href="' . SELF . VIEW . '?action=upload">' . __('Upload') .'</a> ';
 }
 
 
@@ -529,57 +532,6 @@ else
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 
-print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
-print '<html lang="' . W2_LOCALE . '">' . "\n";
-print "<head>\n";
-print '<meta charset="' . W2_CHARSET . '">' . "\n";
-print "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\"/>";
-print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=false\" />\n";
-
-print "<link type=\"text/css\" rel=\"stylesheet\" href=\"" . BASE_URI . "/" . CSS_FILE ."\" />\n";
-print "<title>" . __( $title ) . "</title>\n";
-print "</head>\n";
-
-print "<body>\n";
-
-print "<div align=\"center\">\n";
-print "<div margin=\"auto\" class=\"wrapper\">\n";
-
-print "<div id=\"header\" style=\"display:grid; grid-template-columns: 1fr 1fr\">\n";
-
-print "<div align=\"left\">\n";
-print "<h1>$title</h1>\n";
-print "</div>\n"; // title
-
-print "<div align=\"right\">\n";
-printListbar();
-print "</div>\n"; // list
-
-print "</div>\n"; // header
-
-print "<div align=\"left\">\n";
-print "<hr />\n";
-print "$html\n";
-print "<hr />";
-print "</div>\n"; // main
-
-
-print "<div id=\"footer\" style=\"display:grid; grid-template-columns: 1fr 1fr\">\n";
-
-print "<div align=\"left\">\n";
-printSearch();
-print "</div>\n"; // search
-
-print "<div align=\"right\">\n";
-printEditbar();
-print "</div>\n"; // edit
-
-print "</div>\n"; // footer
-
-print "</div>\n"; // wrapper
-print "</div>\n"; // center
-
-print "</body>\n";
-print "</html>\n";
+include_once TEMPLATE;
 
 ?>
