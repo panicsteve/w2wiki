@@ -54,7 +54,7 @@ define('VIEW', '');
 // The name of the page to show as the "Home" page.
 // Value is a string, the title of a page (case-sensitive!)
 
-define('DEFAULT_PAGE', 'Accueil');
+define('DEFAULT_PAGE', 'Home');
 
 // CSS_FILE
 //
@@ -178,4 +178,4 @@ define('W2_CHARSET', 'UTF-8');
 //
 // Name for locale.
 
-define('W2_LOCALE', 'fr');
+define('W2_LOCALE', 'en');

@@ -79,10 +79,10 @@ p {
 
 pre {
 	font-family: Menlo, Courier, monospace;
+	background-color: #e0e0e0;
 	margin-top: 12px;
 	margin-bottom: 12px;
-	margin-left: 12px;
-	margin-bottom: 12px;
+	padding: 10px;
 
 	/* stroke each browser so that they wrap lines in the pre tag */
 	white-space: pre-wrap;       /* css-3 */
@@ -114,6 +114,15 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+a {
+    color:#1474CA;text-decoration:none
+}
+
+a:hover {
+    text-decoration:underline
+}
+
 
 .wrapper {
     max-width:55em;
