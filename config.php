@@ -163,4 +163,19 @@ define('W2_SESSION_LIFETIME', 60 * 60 * 24 * 30);
 
 define('W2_SESSION_NAME', 'W2');
 
-?>
+
+// -----------------------------
+// Locale and encoding settings
+// -----------------------------
+
+// W2_CHARSET
+//
+// Value for meta charset.
+
+define('W2_CHARSET', 'UTF-8');
+
+// W2_LOCALE
+//
+// Name for locale.
+
+define('W2_LOCALE', 'fr');
