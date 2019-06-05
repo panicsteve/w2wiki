@@ -72,10 +72,10 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 		print "<link type=\"text/css\" rel=\"stylesheet\" href=\"" . BASE_URI . "/" . CSS_FILE ."\" />\n";
 		print "<title>Log In</title>\n";
 		print "</head>\n";
-		print "<body><form method=\"post\">";
+		print "<body><div><form method=\"post\">";
 		print "<input type=\"password\" name=\"p\">\n";
 		print "<input type=\"submit\" value=\"Go\"></form>";
-		print "</body></html>";
+		print "</div></body></html>";
 		exit;
 	}
 }
@@ -104,6 +104,38 @@ function printToolbar()
 	print "<input class=\"tool\" placeholder=\"Search\" size=\"6\" id=\"search\" type=\"text\" name=\"q\" /></form>\n";
 		
 	print "</div>\n";
+}
+
+function printListbar()
+{
+	global $upage, $page, $action;
+ 	print "<a class=\"tool\" href=\"" . SELF . "\">". DEFAULT_PAGE . "</a> - ";
+ 	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">Liste des pages</a> - ";
+	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">Changements récents</a>";
+ 	
+	if ( REQUIRE_PASSWORD )
+		print '<a class="tool" href="' . SELF . '?action=logout">Exit</a>';
+
+}
+
+function printEditbar()
+{
+	global $upage, $page, $action;
+	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">Éditer</a> - ";
+	print "<a class=\"tool\" href=\"" . SELF . "?action=new\">Nouveau</a> - ";
+
+	if ( !DISABLE_UPLOADS )
+		print "<a class=\"tool\" href=\"" . SELF . VIEW . "?action=upload\">Images</a> ";
+
+
+}
+
+
+function printSearch()
+{
+	global $upage, $page, $action;
+	print "<form method=\"post\" action=\"" . SELF . "?action=search\">\n";
+	print "<input class=\"tool\" placeholder=\"Rechercher\" size=\"20\" id=\"search\" type=\"text\" name=\"q\" /></form>\n";
 }
 
 
@@ -495,20 +527,48 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
 print "<html>\n";
 print "<head>\n";
-print "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\"/>";
-print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=false\" />\n";
-
 print "<link type=\"text/css\" rel=\"stylesheet\" href=\"" . BASE_URI . "/" . CSS_FILE ."\" />\n";
 print "<title>$title</title>\n";
 print "</head>\n";
+
 print "<body>\n";
-print "<div class=\"titlebar\">$title <span style=\"font-weight: normal;\">$datetime</span></div>\n";
 
-printToolbar();
+print "<div align=\"center\">\n";
+print "<div margin=\"auto\" class=\"wrapper\">\n";
 
-print "<div class=\"main\">\n";
+print "<div id=\"header\" style=\"display:grid; grid-template-columns: 1fr 1fr\">\n";
+
+print "<div align=\"left\">\n";
+print "<h1>$title</h1>\n";
+print "</div>\n"; // title
+
+print "<div align=\"right\">\n";
+printListbar();
+print "</div>\n"; // list
+
+print "</div>\n"; // header
+
+print "<div align=\"left\">\n";
+print "<hr />\n";
 print "$html\n";
-print "</div>\n";
+print "<hr />";
+print "</div>\n"; // main
+
+
+print "<div id=\"footer\" style=\"display:grid; grid-template-columns: 1fr 1fr\">\n";
+
+print "<div align=\"left\">\n";
+printSearch();
+print "</div>\n"; // search
+
+print "<div align=\"right\">\n";
+printEditbar();
+print "</div>\n"; // edit
+
+print "</div>\n"; // footer
+
+print "</div>\n"; // wrapper
+print "</div>\n"; // center
 
 print "</body>\n";
 print "</html>\n";

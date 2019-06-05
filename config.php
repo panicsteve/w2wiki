@@ -54,7 +54,7 @@ define('VIEW', '');
 // The name of the page to show as the "Home" page.
 // Value is a string, the title of a page (case-sensitive!)
 
-define('DEFAULT_PAGE', 'Home');
+define('DEFAULT_PAGE', 'Accueil');
 
 // CSS_FILE
 //
