@@ -114,26 +114,49 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 
 // Support functions
 
-function printListbar()
+function printHome()
 {
 	global $upage, $page, $action;
-	print "<a class=\"tool\" href=\"" . SELF . "\">". __(DEFAULT_PAGE) . "</a> ";
-	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">". __('All') ."</a> ";
-	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">". __('Recent') ."</a> ";
+	print "<a class=\"tool\" href=\"" . SELF . "\">". __(DEFAULT_PAGE) . "</a>";
+}
+
+function printAll()
+{
+	global $upage, $page, $action;
+	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">". __('All') ."</a>";
+}
+
+function printRecent()
+{
+	global $upage, $page, $action;
+	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">". __('Recent') ."</a>";
+}
+
+function printPassword()
+{
+	global $upage, $page, $action;
 	if ( REQUIRE_PASSWORD )
-		print '<a class="tool" href="' . SELF . '?action=logout">'. __('Exit') .'</a> ';
+		print '<a class="tool" href="' . SELF . '?action=logout">'. __('Exit') .'</a>';
 }
 
-function printEditbar()
+function printEdit()
 {
 	global $upage, $page, $action;
-	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">". __('Edit') ."</a> ";
-	print '<a class="tool" href="' . SELF . '?action=new">'. __('New') .'</a> ';
-
-	if ( !DISABLE_UPLOADS )
-		print '<a class="tool" href="' . SELF . VIEW . '?action=upload">' . __('Upload') .'</a> ';
+	print "<a class=\"tool first\" href=\"" . SELF . "?action=edit&amp;page=$upage\">". __('Edit') ."</a>";
 }
 
+function printNew()
+{
+	global $upage, $page, $action;
+	print '<a class="tool" href="' . SELF . '?action=new">'. __('New') .'</a>';
+}
+
+function printUpload()
+{
+	global $upage, $page, $action;
+	if ( !DISABLE_UPLOADS )
+		print '<a class="tool" href="' . SELF . VIEW . '?action=upload">' . __('Upload') .'</a>';
+}
 
 function printSearch()
 {

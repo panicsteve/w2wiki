@@ -16,8 +16,16 @@ print "<body>\n";
 print "<div class=\"titlebar\">$title <span style=\"font-weight: normal;\">$datetime</span></div>\n";
 
 print "<div class=\"toolbar\">";
-printEditbar();
-printListbar();
+printEdit();
+print " ";
+printNew();
+print " ";
+printAll();
+print " ";
+printRecent();
+print " ";
+printHome();
+print " ";
 printSearch();
 print "</div>\n";
 

@@ -23,7 +23,13 @@ print "<h1>$title</h1>\n";
 print "</div>\n"; // title
 
 print "<div align=\"right\">\n";
-printListbar();
+print "<br />\n";
+print "<br />\n";
+printHome();
+print " - ";
+printAll();
+print " - ";
+printRecent();
 print "</div>\n"; // list
 
 print "</div>\n"; // header
@@ -42,7 +48,11 @@ printSearch();
 print "</div>\n"; // search
 
 print "<div align=\"right\">\n";
-printEditbar();
+printEdit();
+print " - ";
+printNew();
+print " - ";
+printUpload();
 print "</div>\n"; // edit
 
 print "</div>\n"; // footer
