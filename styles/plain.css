@@ -139,7 +139,7 @@ a:hover {
     color:#333
 }
 
-/* Ajustement pour les petits écrans */
+/* Small screens */
 @media (max-width:55em) {
   .wrapper{
     width:90%

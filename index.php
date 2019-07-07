@@ -167,11 +167,15 @@ function printSearch()
 
 function printNavmenu()
 {
-	if ( file_exists(NAVMENU_FILE) )
+	global $upage, $page, $action;
+	if ( NAVMENU && $action == "view" )
 	{
-		$menutext = file_get_contents(NAVMENU_FILE);
-		$menuhtml = toHTML($menutext);
-		print "<div class=\"navmenu\">\n$menuhtml\n</div>\n";
+		if ( file_exists(NAVMENU_FILE) )
+		{
+			$menutext = file_get_contents(NAVMENU_FILE);
+			$menuhtml = toHTML($menutext);
+			print "<div class=\"navmenu\">\n$menuhtml\n</div>\n";
+		}
 	}
 }
 
