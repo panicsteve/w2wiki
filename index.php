@@ -165,6 +165,15 @@ function printSearch()
 	print "<input class=\"tool\" placeholder=\"". __('Search') ."\" size=\"20\" id=\"search\" type=\"text\" name=\"q\" /></form>\n";
 }
 
+function printNavmenu()
+{
+	if ( file_exists(NAVMENU_FILE) )
+	{
+		$menutext = file_get_contents(NAVMENU_FILE);
+		$menuhtml = toHTML($menutext);
+		print "<div class=\"navmenu\">\n$menuhtml\n</div>\n";
+	}
+}
 
 function descLengthSort($val_1, $val_2) 
 { 
@@ -304,7 +313,7 @@ if ( $action == "edit" || $action == "new" )
 	if ( $action == "new" )
 		$text = "";
 
-	$html .= "<p><textarea id=\"text\" name=\"newText\" rows=\"" . EDIT_ROWS . "\">$text</textarea></p>\n";
+	$html .= "<p><textarea id=\"text\" name=\"newText\" rows=\"" . EDIT_ROWS . "\" style=\"white-space: pre;\">$text</textarea></p>\n";
 	$html .= "<p><input type=\"hidden\" name=\"action\" value=\"save\" />";
 	$html .= '<input id="save" type="submit" value="'. __('Save') .'" />'."\n";
 	$html .= '<input id="cancel" type="button" onclick="history.go(-1);" value="'. __('Cancel') .'" />'."\n";

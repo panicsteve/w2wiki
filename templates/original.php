@@ -28,9 +28,11 @@ printHome();
 print " ";
 printSearch();
 print "</div>\n";
-
+print "<div class=\"content\">\n";
+printNavmenu();
 print "<div class=\"main\">\n";
 print "$html\n";
+print "</div>\n";
 print "</div>\n";
 
 print "</body>\n";

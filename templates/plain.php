@@ -36,10 +36,12 @@ print "</div>\n"; // header
 
 print "<div align=\"left\">\n";
 print "<hr />\n";
+
+printNavmenu();
+
 print "$html\n";
 print "<hr />";
 print "</div>\n"; // main
-
 
 print "<div id=\"footer\" style=\"display:grid; grid-template-columns: 1fr 1fr\">\n";
 

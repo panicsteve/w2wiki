@@ -11,103 +11,104 @@
  */
  
 * {
-	font-family: sans-serif;
-	font-size: 1em;
-	margin: 0;
-	padding: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
 }
 
 blockquote {
-	background-color: #f0f0f0;
-	margin: 0px 0px 12px 20px;
-	padding-top: 4px 10px 4px 10px;
+    background-color: #f0f0f0;
+    margin: 0px 0px 12px 20px;
+    padding-top: 4px 10px 4px 10px;
 }
 
 form {
-	display: inline;
+    display: inline;
 }
 
 li {
-	line-height: 1.5em;
+    line-height: 1.25em;
 }
 
 h1 {
-	font-size: 2em;
-	font-weight: bold;
-	margin-bottom: 12px;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 h2 {
-	font-size: 1.5em;
-	font-weight: bold;
-	margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 h3 {
-	font-size: 1em;
-	font-weight: bold;
-	margin-bottom: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 hr {
-	border-top: 1px solid #cccccc;
-	border-bottom: 0;
-	border-left: 0;
-	border-right: 0;
-	margin-top: 12px;
-	margin-bottom: 12px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 ul {
-	padding-left: 12px;
-	margin-left: 12px;
-	margin-bottom: 12px;
-	list-style-position: inside;
+    padding-left: 12px;
+    margin-left: 12px;
+    list-style-position: inside;
 }
 
 ol {
-	margin-left: 12px;
-	margin-bottom: 12px;
-	padding-left: 12px;
+    margin-left: 12px;
+    padding-left: 12px;
         list-style-position: inside;
 }
 
 p {
-	margin-top: 12px;
-	margin-bottom: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 pre {
-	font-family: Menlo, Courier, monospace;
-	background-color: #e0e0e0;
-	margin-top: 12px;
-	margin-bottom: 12px;
-	padding: 10px;
+    font-family: Menlo, Courier, monospace;
+    background-color: #e0e0e0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 10px;
 
-	/* stroke each browser so that they wrap lines in the pre tag */
-	white-space: pre-wrap;       /* css-3 */
-	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-	white-space: -pre-wrap;      /* Opera 4-6 */
-	white-space: -o-pre-wrap;    /* Opera 7 */
-	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    /* stroke each browser so that they wrap lines in the pre tag */
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 code {
-	font-family: Menlo, Courier, monospace;
+    font-family: Menlo, Courier, monospace;
 }
 
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 table, td {
-	padding: 2px;
+    padding: 2px;
 }
 
 textarea {
-	font-family: monospace;
-	width: 100%;
-	background-color: #ffffee;
+    font-family: monospace;
+    width: 100%;
+    background-color: #ffffee;
 }
 
 img {
@@ -123,10 +124,19 @@ a:hover {
     text-decoration:underline
 }
 
-
 .wrapper {
     max-width:50em;
     padding: 10px;
+}
+
+.navmenu {
+    float: right;
+    min-width: 10em;
+    padding:0.5em;
+    margin:1em;
+    border:1px #eee;
+    background:#eee;
+    color:#333
 }
 
 /* Ajustement pour les petits écrans */
@@ -134,6 +144,4 @@ a:hover {
   .wrapper{
     width:90%
   }
-}
-
 }
