@@ -60,7 +60,14 @@ define('DEFAULT_PAGE', 'Home');
 //
 // The CSS file to load to style the wiki, relative to BASE_URI
 
-define('CSS_FILE', 'index.css');
+define('CSS_FILE', 'styles/original.css');
+
+// Templates
+//
+// The template file to load, should match css, relative to BASE_URI
+
+define('TEMPLATE', 'templates/original.php');
+
 
 // --------------------
 // File upload settings
@@ -163,4 +170,28 @@ define('W2_SESSION_LIFETIME', 60 * 60 * 24 * 30);
 
 define('W2_SESSION_NAME', 'W2');
 
-?>
+
+// -----------------------------
+// Locale and encoding settings
+// -----------------------------
+
+// W2_CHARSET
+//
+// Value for meta charset.
+
+define('W2_CHARSET', 'UTF-8');
+
+// W2_LOCALE
+//
+// Name for locale.
+
+define('W2_LOCALE', 'en');
+
+// -----------------------------
+// Navigation menu
+// -----------------------------
+//
+// Optional navigation menu and its content file
+
+define('NAVMENU', true);
+define('NAVMENU_FILE', PAGES_PATH . '/Menu.txt');
