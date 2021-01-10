@@ -82,6 +82,24 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 
 // Support functions
 
+function _handle_links($match)
+{
+	return "<a href=\"" . SELF . VIEW . "/" . htmlentities($match[1]) . "\">" . htmlentities($match[1]) . "</a>";
+}
+
+
+function _handle_images($match)
+{
+	return "<img src=\"" . BASE_URI . "/images/" . htmlentities($match[1]) . "\" alt=\"" . htmlentities($match[1]) . "\" />";
+}
+
+
+function _handle_message($match)
+{
+	return "[<a href=\"message:" . htmlentities($match[1]) . "\">email</a>]";
+}
+
+
 function printToolbar()
 {
 	global $upage, $page, $action;
@@ -149,9 +167,9 @@ function toHTML($inText)
 		}
 	}
 	
- 	$inText = preg_replace("/\[\[(.*?)\]\]/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $inText);
-	$inText = preg_replace("/\{\{(.*?)\}\}/", "<img src=\"" . BASE_URI . "/images/\\1\" alt=\"\\1\" />", $inText);
-	$inText = preg_replace("/message:(.*?)\s/", "[<a href=\"message:\\1\">email</a>]", $inText);
+	$inText = preg_replace_callback("/\[\[(.*?)\]\]/", '_handle_links', $inText);
+	$inText = preg_replace_callback("/\{\{(.*?)\}\}/", '_handle_images', $inText);
+	$inText = preg_replace_callback("/message:(.*?)\s/", '_handle_message', $inText);
 
 	$html = MarkdownExtra::defaultTransform($inText);
 	$inText = htmlentities($inText);
