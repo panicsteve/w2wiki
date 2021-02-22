@@ -20,7 +20,7 @@
 // The base system path to W2.  You only need to change this if we guess wrong.
 // You should not use a trailing slash.
 
-define('BASE_PATH', getcwd());
+define('BASE_PATH', __DIR__);
 
 // PAGES_PATH
 //
@@ -162,5 +162,3 @@ define('W2_SESSION_LIFETIME', 60 * 60 * 24 * 30);
 // Name for session (used in the cookie)
 
 define('W2_SESSION_NAME', 'W2');
-
-?>
