@@ -1,4 +1,5 @@
-# Welcome to W2
+Welcome to W2
+-------------
 
 This is your home page.  Feel free to edit it, and replace the content with anything you like.
 
