@@ -146,6 +146,8 @@ function toHTML($inText)
 {
 	global $page;
 	
+	$inText = preg_replace("/<[\/]*script>/", "", $inText);                
+
 	$dir = opendir(PAGES_PATH);
 	while ( $filename = readdir($dir) )
 	{
