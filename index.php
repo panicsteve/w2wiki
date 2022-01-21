@@ -259,10 +259,10 @@ if ( $action == "edit" || $action == "new" )
 	if ( $action == "edit" )
 		$html .= "<input type=\"hidden\" name=\"page\" value=\"$page\" />\n";
 	else
-		$html .= "<p>Title: <input id=\"title\" type=\"text\" name=\"page\" /></p>\n";
+		$html .= "<p>Title: <input id=\"title\" type=\"text\" name=\"page\" value='".$_REQUEST['title']."' /></p>\n";
 
 	if ( $action == "new" )
-		$text = "";
+		$text = $_REQUEST['newText'];
 
 	$html .= "<p><textarea id=\"text\" name=\"newText\" rows=\"" . EDIT_ROWS . "\">$text</textarea></p>\n";
 	$html .= "<p><input type=\"hidden\" name=\"action\" value=\"save\" />";
@@ -309,7 +309,10 @@ else if ( $action == "uploaded" )
 			if ( move_uploaded_file($_FILES['userfile']['tmp_name'], 
 				BASE_PATH . "/images/$dstName") === true ) 
 			{
-				$html = "<p class=\"note\">File '$dstName' uploaded</p>\n";
+				$html = "<p class=\"note\">File '$dstName' uploaded<br />";
+				$uploadedName = pathinfo($dstName);
+				$filename = $uploadedName['filename'];
+				$html .= "<a href='?action=new&newText=![".$filename."](".BASE_URI."/images/$dstName)&title=$filename'>Create a new page with this image in it</a></p>";
 			}
 			else
 			{
