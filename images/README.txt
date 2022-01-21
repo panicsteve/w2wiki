@@ -1,0 +1,1 @@
+This directory is where any uploads will be stored.
