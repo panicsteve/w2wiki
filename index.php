@@ -312,7 +312,7 @@ else if ( $action == "uploaded" )
 				$html = "<p class=\"note\">File '$dstName' uploaded<br />";
 				$uploadedName = pathinfo($dstName);
 				$filename = $uploadedName['filename'];
-				$html .= "<a href='?action=new&newText=![".$filename."](".BASE_URI."/images/$dstName)&title=$filename'>Create a new page with this image in it</a></p>";
+				$html .= "<a href='?action=new&newText=![$filename](".BASE_URI."/images/$dstName)&title=$filename'>Create a new page with this image in it</a></p>";
 			}
 			else
 			{
