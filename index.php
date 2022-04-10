@@ -214,6 +214,14 @@ if ( !function_exists('file_put_contents') )
 		}
     }
 }
+// Support PHP 8.1 by setting two predefined variables to empty strings if
+// not already defined. Fixes a bunch of deprecation warnings.
+
+if (!isset($_SERVER["PATH_INFO"]))
+  $_SERVER["PATH_INFO"] = '';
+if (!isset($_REQUEST['page']))
+  $_REQUEST['page'] = '';
+
 
 // Main code
 
