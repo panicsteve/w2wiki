@@ -151,7 +151,7 @@ function toHTML($inText)
 	$dir = opendir(PAGES_PATH);
 	while ( $filename = readdir($dir) )
 	{
-		if ( $filename{0} == '.' )
+		if ( $filename[0] == '.' )
 			continue;
 			
 		$filename = preg_replace("/(.*?)\.txt/", "\\1", $filename);
@@ -214,6 +214,14 @@ if ( !function_exists('file_put_contents') )
 		}
     }
 }
+// Support PHP 8.1 by setting two predefined variables to empty strings if
+// not already defined. Fixes a bunch of deprecation warnings.
+
+if (!isset($_SERVER["PATH_INFO"]))
+  $_SERVER["PATH_INFO"] = '';
+if (!isset($_REQUEST['page']))
+  $_REQUEST['page'] = '';
+
 
 // Main code
 
@@ -389,7 +397,7 @@ else if ( $action == "all_name" )
 
 	while ( $file = readdir($dir) )
 	{
-		if ( $file{0} == "." )
+		if ( $file[0] == "." )
 			continue;
 
 		$afile = preg_replace("/(.*?)\.txt/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $file);
@@ -424,7 +432,7 @@ else if ( $action == "all_date" )
 	$filelist = array();
 	while ( $file = readdir($dir) )
 	{
-		if ( $file{0} == "." )
+		if ( $file[0] == "." )
 			continue;
 			
 		$filelist[preg_replace("/(.*?)\.txt/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $file)] = filemtime(PAGES_PATH . "/$file");
@@ -458,7 +466,7 @@ else if ( $action == "search" )
 		
 		while ( $file = readdir($dir) )
 		{
-			if ( $file{0} == "." )
+			if ( $file[0] == "." )
 				continue;
 
 			$text = file_get_contents(PAGES_PATH . "/$file");
