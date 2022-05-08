@@ -113,6 +113,13 @@ define('EDIT_ROWS', 18);
 
 define('AUTOLINK_PAGE_TITLES', false);
 
+// COLORIZE_MISSING_PAGES
+//
+// Automatically highlights as red links, any linked pages which are
+// not yet written. Existing but blank pages are not colorized. This
+// might degrade performance if you have thousands of links on a page.
+
+define('COLORIZE_MISSING_PAGES', true);
 
 // -----------------------------
 // Security and session settings
