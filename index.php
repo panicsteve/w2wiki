@@ -246,6 +246,7 @@ if ( $page == "" )
 	$page = DEFAULT_PAGE;
 
 $filename = PAGES_PATH . "/$page.txt";
+$text = "";
 
 if ( file_exists($filename) )
 {
