@@ -253,7 +253,7 @@ if ( file_exists($filename) )
 }
 else
 {
-	if ( $action != "save" && $action != "all_name" && $action != "all_date" && $action != "upload" && $action != "new" && $action != "logout" && $action != "uploaded" && $action != "search" && $action != "view" )
+	if ( $action != "save" && $action != "all_name" && $action != "all_date" && $action != "upload" && $action != "new" && $action != "logout" && $action != "uploaded" && $action != "search" && $action != "view" && $action != "rename" && $action != "renamed" )
 	{
 		$action = "edit";
 	}
@@ -267,10 +267,10 @@ if ( $action == "edit" || $action == "new" )
 	if ( $action == "edit" )
 		$html .= "<input type=\"hidden\" name=\"page\" value=\"$page\" />\n";
 	else
-		$html .= "<p>Title: <input id=\"title\" type=\"text\" name=\"page\" /></p>\n";
+		$html .= "<p>Title: <input id=\"title\" type=\"text\" name=\"page\" value='".$_REQUEST['title']."' /></p>\n";
 
 	if ( $action == "new" )
-		$text = "";
+		$text = $_REQUEST['newText'];
 
 	$html .= "<p><textarea id=\"text\" name=\"newText\" rows=\"" . EDIT_ROWS . "\">$text</textarea></p>\n";
 	$html .= "<p><input type=\"hidden\" name=\"action\" value=\"save\" />";
@@ -317,7 +317,10 @@ else if ( $action == "uploaded" )
 			if ( move_uploaded_file($_FILES['userfile']['tmp_name'], 
 				BASE_PATH . "/images/$dstName") === true ) 
 			{
-				$html = "<p class=\"note\">File '$dstName' uploaded</p>\n";
+				$html = "<p class=\"note\">File '$dstName' uploaded<br />";
+				$uploadedName = pathinfo($dstName);
+				$filename = $uploadedName['filename'];
+				$html .= "<a href='?action=new&newText=![$filename](".BASE_URI."/images/$dstName)&title=$filename'>Create a new page with this image in it</a></p>";
 			}
 			else
 			{
@@ -347,7 +350,7 @@ else if ( $action == "save" )
 
 	$html .= toHTML($newText);
 }
-/*
+
 else if ( $action == "rename" )
 {
 	$html = "<form id=\"rename\" method=\"post\" action=\"" . SELF . "\">";
@@ -370,15 +373,17 @@ else if ( $action == "renamed" )
 
 	if ( rename($prevfilename, $filename) )
 	{
+		$html = "<p class=\"note\">Renamed to <a href='" . SELF . VIEW . "/$pg'>$pg</a></p>\n";
 		// Success.  Change links in all pages to point to new page
-		if ( $dh = opendir(PAGES_PATH) )
-		{
-			while ( ($file = readdir($dh)) !== false )
-			{
-				$content = file_get_contents($file);
-				$pattern = "/\[\[" . $pp . "\]\]/g";
-				preg_replace($pattern, "[[$pg]]", $content);
-				file_put_contents($file, $content);
+		if ( $dh = opendir(PAGES_PATH) ) {
+			while ( ($file = readdir($dh)) !== false ) {
+				if ($file != "." && $file != "..") {
+					$content = file_get_contents(PAGES_PATH.'/'.$file);
+					if (stripos($content, "[[$pp]]") !== false) {
+						$content = str_ireplace("[[$pp]]", "[[$pg]]", $content);
+						file_put_contents(PAGES_PATH.'/'.$file, $content);
+					}
+				}
 			}
 		}
 	}
@@ -387,7 +392,7 @@ else if ( $action == "renamed" )
 		$html = "<p class=\"note\">Error renaming file</p>\n";
 	}
 }
-*/
+
 else if ( $action == "all_name" )
 {
 	$dir = opendir(PAGES_PATH);
@@ -402,8 +407,9 @@ else if ( $action == "all_name" )
 
 		$afile = preg_replace("/(.*?)\.txt/", "<a href=\"" . SELF . VIEW . "/\\1\">\\1</a>", $file);
 		$efile = preg_replace("/(.*?)\.txt/", "<a href=\"?action=edit&amp;page=\\1\">edit</a>", urlencode($file));
+		$rfile = preg_replace("/(.*?)\.txt/", "<a href=\"?action=rename&amp;page=\\1\">rename</a>", urlencode($file));
 
-		array_push($filelist, "<tr style=\"background-color: $color;\"><td>$afile</td><td width=\"20\"></td><td>$efile</td></tr>");
+		array_push($filelist, "<tr style=\"background-color: $color;\"><td>$afile</td><td width=\"20\"></td><td>$efile</td><td>$rfile</td></tr>");
 
 		if ( $color == "#ffffff" )
 			$color = "#f4f4f4";
