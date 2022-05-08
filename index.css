@@ -149,6 +149,10 @@ a.tool {
 	color: #eeeeee;
 }
 
+a.missing-link {
+	color: #ba0000;
+}
+
 input.tool {
 	font-size: 11px;
 	color: #000000;
