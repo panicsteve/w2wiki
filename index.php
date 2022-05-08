@@ -84,7 +84,13 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 
 function _handle_links($match)
 {
-	return "<a href=\"" . SELF . VIEW . "/" . htmlentities($match[1]) . "\">" . htmlentities($match[1]) . "</a>";
+	$link_page = $match[1];
+	$link_filename = PAGES_PATH . "/$link_page.txt";
+	$link_page_exists = file_exists($link_filename);
+	if ($link_page_exists)
+		return "<a href=\"" . SELF . VIEW . "/" . htmlentities($link_page) . "\">" . htmlentities($link_page) . "</a>";
+	else
+		return "<a href=\"" . SELF . VIEW . "/" . htmlentities($link_page) . "\" class=\"missing-link\">" . htmlentities($link_page) . "</a>";
 }
 
 
@@ -246,6 +252,7 @@ if ( $page == "" )
 	$page = DEFAULT_PAGE;
 
 $filename = PAGES_PATH . "/$page.txt";
+$text = "";
 
 if ( file_exists($filename) )
 {
