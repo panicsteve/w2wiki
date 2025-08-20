@@ -84,7 +84,18 @@ if ( REQUIRE_PASSWORD && !isset($_SESSION['password']) )
 
 function _handle_links($match)
 {
-	return "<a href=\"" . SELF . VIEW . "/" . htmlentities($match[1]) . "\">" . htmlentities($match[1]) . "</a>";
+	$link = $match[1];
+	if ( COLORIZE_MISSING_PAGES ) {
+		$link_page = sanitizeFilename($link);
+		$link_filename = PAGES_PATH . "/$link_page.txt";
+		$link_page_exists = file_exists($link_filename);
+	} else {
+		$link_page_exists = true;
+	}
+	if ($link_page_exists)
+		return "<a href=\"" . SELF . VIEW . "/" . htmlentities($link) . "\">" . htmlentities($link) . "</a>";
+	else
+		return "<a href=\"" . SELF . VIEW . "/" . htmlentities($link) . "\" class=\"missing-link\">" . htmlentities($link) . "</a>";
 }
 
 
