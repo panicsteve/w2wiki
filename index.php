@@ -113,7 +113,7 @@ function printToolbar()
 
  	print "<a class=\"tool\" href=\"" . SELF . "?action=all_name\">All</a> ";
 	print "<a class=\"tool\" href=\"" . SELF . "?action=all_date\">Recent</a> ";
- 	print "<a class=\"tool\" href=\"" . SELF . "\">". DEFAULT_PAGE . "</a>";
+ 	print "<a class=\"tool\" href=\"" . SELF . "/" . DEFAULT_PAGE . "\">". DEFAULT_PAGE . "</a>";
  	
 	if ( REQUIRE_PASSWORD )
 		print '<a class="tool" href="' . SELF . '?action=logout">Exit</a>';
