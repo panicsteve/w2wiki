@@ -99,8 +99,9 @@ define('DEFAULT_PAGE', 'Home');
 // CSS_FILE
 //
 // The CSS file to load to style the wiki, relative to BASE_URI
-
-define('CSS_FILE', 'index.css');
+// the time() stamp is added to the url of the css file to prevent the browser from caching the css file
+// otherwise changes in the css file you made might not be immediatly applyed on the index.php of your wiki
+define('CSS_FILE', 'index.css?version=' . time());
 
 
 

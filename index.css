@@ -9,27 +9,36 @@
  * Written with Coda: <http://panic.com/coda/>
  *
  */
- 
+
+
 * {
 	font-family: Helvetica, sans-serif;
-	font-size: 13px;
+	font-size: 12px;
 	margin: 0;
 	padding: 0;
 }
 
+
+
 blockquote {
 	background-color: #f0f8f0;
-	margin: 0px 0px 12px 20px;
-	padding-top: 4px 10px 4px 10px;
+	margin: 0px 12px;
+	padding: 4px 10px;
 }
+
+
 
 form {
 	display: inline;
 }
 
+
+
 li {
 	line-height: 1.5em;
 }
+
+
 
 h1 {
 	font-size: 20px;
@@ -37,17 +46,23 @@ h1 {
 	margin-bottom: 8px;
 }
 
+
+
 h2 {
 	font-size: 16px;
 	font-weight: bold;
 	margin-bottom: 8px;
 }
 
+
+
 h3 {
 	font-size: 13px;
 	font-weight: bold;
 	margin-bottom: 8px;
 }
+
+
 
 hr {
 	border-top: 1px solid #cccccc;
@@ -58,12 +73,16 @@ hr {
 	margin-bottom: 12px;
 }
 
+
+
 ul {
 	padding-left: 12px;
 	margin-left: 12px;
 	margin-bottom: 12px;
 	list-style-position: inside;
 }
+
+
 
 ol {
 	margin-left: 12px;
@@ -72,9 +91,13 @@ ol {
         list-style-position: inside;
 }
 
+
+
 p {
 	margin: 12px 12px 12px 12px;
 }
+
+
 
 pre {
 	font-family: Menlo, Courier, monospace;
@@ -90,18 +113,34 @@ pre {
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+
+
 code {
 	font-family: Menlo, Courier, monospace;
 	font-size: 11px;
 }
 
-table {
-	border-collapse: collapse;
+
+/* --------------------------------------------
+table, th, td {
+  border: 1px solid black;
 }
+
+
+
+ 
+th, td {
+  background-color: #96D4D4;
+}
+-----------------------------------------------
+*/
+
 
 table, td {
 	padding: 2px;
 }
+
+
 
 textarea {
 	font-family: Menlo, Courier, monospace;
@@ -110,9 +149,13 @@ textarea {
 	background-color: #ffffee;
 }
 
+
+
 .main {	
 	padding: 8px;
 }
+
+
 
 .note {
 	background-color: #ffffcc;
@@ -121,6 +164,8 @@ textarea {
 	color: #666644;
 	border: solid 1px #666644;
 }
+
+
 
 .titlebar {
 	background-color: #222222;
@@ -131,10 +176,14 @@ textarea {
 	padding: 4px 4px 4px 12px;
 }
 
+
+
 .titledate {
 	font-size: 10px;
 	color: #999999;
 }
+
+
 
 .toolbar {
 	background-color: #777777;
@@ -143,16 +192,22 @@ textarea {
 	padding: 4px 4px 4px 12px;
 }
 
+
+
 a.tool {
 	font-size: 11px;
 	margin-right: 8px;
 	color: #eeeeee;
 }
 
+
+
 input.tool {
 	font-size: 11px;
 	color: #000000;
 }
+
+
 
 img {
     max-width: 100%;
