@@ -11,8 +11,8 @@
  */
  
 * {
-	font-family: Helvetica, sans-serif;
-	font-size: 13px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
 	margin: 0;
 	padding: 0;
 }
@@ -32,20 +32,20 @@ li {
 }
 
 h1 {
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 2em;
+	font-weight: 500;
 	margin-bottom: 8px;
 }
 
 h2 {
-	font-size: 16px;
-	font-weight: bold;
+	font-size: 1.8em;
+	font-weight: 500;
 	margin-bottom: 8px;
 }
 
 h3 {
-	font-size: 13px;
-	font-weight: bold;
+	font-size: 1.6em;
+	font-weight: 500;
 	margin-bottom: 8px;
 }
 
@@ -78,7 +78,6 @@ p {
 
 pre {
 	font-family: Menlo, Courier, monospace;
-	font-size: 11px;
 	margin-left: 12px;
 	margin-bottom: 12px;
 
@@ -88,11 +87,15 @@ pre {
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+	background: #ffffbb;
+	border: 1px dashed gray;
+	padding: 1em;
 }
 
 code {
 	font-family: Menlo, Courier, monospace;
-	font-size: 11px;
+	font-size: .9em;
 }
 
 table {
@@ -105,7 +108,7 @@ table, td {
 
 textarea {
 	font-family: Menlo, Courier, monospace;
-	font-size: 11px;
+	font-size: 1em;
 	width: 99%;
 	background-color: #ffffee;
 }
@@ -123,38 +126,80 @@ textarea {
 }
 
 .titlebar {
-	background-color: #222222;
-	background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#000000));
-	color: #ffffff;
-	font-size: 18px;
-	font-weight: bold;
+    background-color: rgb(0, 73, 176);
+}
+
+.titlebar a {
+	text-decoration: none;
+	font-size: 2.2em;
+	font-weight: 500;
 	padding: 4px 4px 4px 12px;
+	color: #ffffff;
 }
 
 .titledate {
 	font-size: 10px;
-	color: #999999;
+	margin-left: .5em;
+	color: #ffffff;
 }
 
 .toolbar {
-	background-color: #777777;
-    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#444444));
-	font-size: 12px;
+    background-color: rgb(30, 101, 201);
+	font-size: 1em;
 	padding: 4px 4px 4px 12px;
 }
 
 a.tool {
-	font-size: 11px;
-	margin-right: 8px;
-	color: #eeeeee;
+	font-size: 1em;
+    margin-right: 8px;
+    color: rgb(238, 238, 238);
+	text-decoration: none;
+}
+
+a.tool:hover {
+	text-decoration: underline;
+}
+
+input {
+	font-size: 1em;
 }
 
 input.tool {
-	font-size: 11px;
+	border: none;
 	color: #000000;
+	width: 5em;
+	padding: .1em;
+	padding-left: .5em;
+}
+
+input.tool:focus {
+	width: 15em;
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+input[type="button"],
+input[type="submit"] {
+	border:none;
+	border-radius: 3px;
+	padding: .5em 1em;
+	cursor: pointer;
+}
+
+input[type="submit"] {
+    background-color: rgb(30, 101, 201);
+	color: white;
+}
+input[type="button"] {
+	background-color: rgb(240, 240, 240);
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(69, 135, 226);
+}
+input[type="button"]:hover {
+	background-color: rgb(220, 220, 220);
 }
